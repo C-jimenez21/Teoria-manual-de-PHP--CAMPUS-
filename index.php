@@ -6,10 +6,36 @@
 
 
 /**
-* ? Estas son las etiquetas que indican el inicio y final de un script 
+* ? Funciones de salida PHP 
+* * En este apartado se presentan las diferentes variables de salida que tenemos con PHP
+* todo Estas funciones imprimen directamente en el HTML
 */
 <?php
-/**
- * * Aqui va todo el codigo PHP
-*/
+    /**
+     * ? echo(); es la funcion mas comun para imprimir, sirve para imprimir una o más cadenas de texto
+     */
+    echo "texto a imprimir";
+    
+    /**
+     * ? printf(); es similar a echo() pero solo imprime una linea a la vez
+     * * la adicion del caracter "%s" es para concatenar cadenas de texto
+     */
+    
+     $texto  = "mundo";
+     printf("Hola %s", $texto);
+
+     /**
+     * ? sprintf(); es similar a printf() pero no la devuelve de una vez sino que se guarda como resultado para agregar a una variable
+     */
+    
+     $text = "Mundo";
+     $mensaje = sprintf("Hola %s", $text);
+     echo $mensaje; 
+
+
+    /**
+     * ? var_dump() nos sirve para saber que tipo de variable se esta trabajando, ademas  tambien devuelve la longitud 
+     */
+     var_dump($texto);
+
 ?>
