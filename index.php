@@ -32,10 +32,44 @@
      $mensaje = sprintf("Hola %s", $text);
      echo $mensaje; 
 
-
     /**
      * ? var_dump() nos sirve para saber que tipo de variable se esta trabajando, ademas  tambien devuelve la longitud 
      */
      var_dump($texto);
+
+
+//--------PUNTO 7------------
+/**
+* ? Variables y constantes 
+* * En este apartado se presentan como declarar una variable en PHP 
+* todo Se definen usando el parametro $ y se le asigna un valor usando el operador =
+*/
+//declaracion variable numerica
+$edad = 25;
+
+//declararacion variable de texto
+$nombre = "Juan";
+
+//declaracion variable booleana
+$es_valido = true;
+echo var_dump($es_valido);
+
+/**
+ * ? Para la declaracion de constantes se usa la siguiente sintaxis 
+ */
+//declaracion constante numerica
+define("PI", 3.1416);
+echo PI;
+//declaracion constante de texto
+define("SALUDO", "Hola campers!");
+echo SALUDO;
+//declaracion constante numerica
+define("ES_VALIDO", true);
+echo ES_VALIDO;
+
+
+
+
+
 
 ?>
