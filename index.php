@@ -68,8 +68,30 @@ define("ES_VALIDO", true);
 echo ES_VALIDO;
 
 
+//--------PUNTO 8------------
+/**
+ * ? Tipos de datos
+ * * En este apartado se muestran los diferentes tipos de datos con los que se puede trabajar en PHP
+ * todo Enteros(Int) - Punto flotante (float) - Cadenas de texto (String) - Booleanos(bool) - Arreglos(array) - Objetos(object) - recurso(Resource) - Nulos(null)
+ */
+    //Entero
+    $numero = 200;
+    var_dump($numero); //int(200)
 
+    //Floats
+    $float = 200.5;
+    var_dump($float); //float(200.5)
+    
+    //Boolean
+    $logueado = true;
+    var_dump($logueado); //bool(true)
 
+    //Strings
+    $nombre = "Juan";
+    var_dump($nombre); // string(4) "Juan"
 
-
+    //Arreglos
+    $array = [];
+    var_dump($array);  // array(0) { } 
+    
 ?>
