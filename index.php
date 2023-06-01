@@ -10,6 +10,7 @@
 * todo Estas funciones imprimen directamente en el HTML
 */
 <?php
+   //header("Content-type: application/json");
     echo "<br><br>-------PUNTO 6 ------------<br>";
     /**
      * ? echo(); es la funcion mas comun para imprimir, sirve para imprimir una o más cadenas de texto
@@ -182,6 +183,64 @@ echo "<br>--------PUNTO 8------------<br>";
     echo "<br> El cliente {$nombreCliente} es {$tipoCliente}";
 
      
-     
-     
+   echo "<br>------PUNTO 10 -----<br>";
+   /**
+    * ? Arreglos, Arreglos asociativos y funciones para arreglos
+    * * Hay tres tipos de arrays, arrays indexados, arrays asociativos y arrays multidimensionales.
+    */
+
+    /** 
+     * ? Arrays indexados
+     * todo Son arrays que almacenan elementos y se acceden a ellos medianta un indice númerico.
+     */
+    $nombres = array("Juan", "Pedro", "Santiago");
+    print_r($nombres); echo "<br>";
+    
+   /**
+    * ? Arrays asociativos
+    * todo Son arrays cuyos elementos se almacenan y acceden mediante una clave o nombre, estos estan compuestos por elementos "Clave => Valor" 
+    */
+    $edades = array(
+      "Juan" => 21,
+      "Pedro" => 37,
+      "Santiago" => 43
+    );
+    print_r($edades);echo "<br>";
+
+    /**
+     * ? Arrays multidimensionales
+     * todo Son arrays que contienen otros arrays como elementos, esto vendria siendo parecido a un matriz de datos, ademas estos elementos pueden ser matricese asosiativas o indexadas
+     */
+
+    $personas = array(
+      "Juan" => array(
+         "Edad" => 21,
+         "Ciudad" => "Madrid", 
+         "Pais" => "España"),
+      "Pedro" => array(
+         "Edad" => 37, 
+         "Ciudad" => "Barcelona", "Pais" => "España"),
+         "Santiago" => array("Edad" => 43, "Ciudad" => "Valencia", "Pais" => "España")
+      );
+      print_r($personas);echo "<br>";
+      
+      /**
+       * ? Para acceder a los parametros de un array, primero se accede al valor de la fila y luego por el valor de la columna, usando nomenclatura de corchete.
+       */
+      print_r ($personas["Santiago"]["Ciudad"]);
+      echo "<br>";
+      
+      /**
+       * ? Agregar datos a los arrays, se usa la misma nomenclatura que para leerlo y se asigna el valor mediante el operador de asignacion " = "
+       */
+      $personas["Juan"]["Altura"] = 1.69;
+      print_r($personas);echo "<br>";
+
+      /**
+       * ? Como recorrer un array asociativo
+       */
+      foreach($edades as $clave => $valor){
+         var_dump("Clave: ". $clave. " Valor ". $valor . "<br>");
+      }
+      
 ?>
