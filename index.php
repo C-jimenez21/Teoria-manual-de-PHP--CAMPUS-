@@ -10,7 +10,7 @@
 * todo Estas funciones imprimen directamente en el HTML
 */
 <?php
-   //header("Content-type: application/json");
+   header("Content-type: application/json");
     echo "<br><br>-------PUNTO 6 ------------<br>";
     /**
      * ? echo(); es la funcion mas comun para imprimir, sirve para imprimir una o más cadenas de texto
@@ -242,5 +242,63 @@ echo "<br>--------PUNTO 8------------<br>";
       foreach($edades as $clave => $valor){
          var_dump("Clave: ". $clave. " Valor ". $valor . "<br>");
       }
+
+      /**
+       * ? En este apartado se implementaran las funciones mas usadas para los arrays en PHP
+       * todo Todas estas funciones reciben un array y retornan un array a excepcion de algunas, las cuales se mencionaran en su respectiva explicacion
+       */
       
+       /**
+        * ? array_flip() lo que hace es cambiar los valores por claves y viceversa.
+        * * array_flip(array $array): array  
+        */
+
+        $arr = array("las", "caleñas", "son");
+        print_r ($arr);
+        print_r (array_flip($arr)); 
+        
+        /**
+         * ? array_fill() lo que hace es rellenar el array con el valor indicado
+         * * array_fill(int $start_index, int $count, mixed $value): array
+         */
+        print_r(array_fill(-2, 4, "Hola mundo"));
+
+       /**
+         * ? array_filter() lo que hace es rellenar el array con el valor indicado
+         * * array_filter(array $array, ?callable $callback = null, int $mode = 0): array
+         * */
+        $arr1 = array(1,2,5,2,7,3,12,42,23,42,24,523,23,123,5,32,234,65,346,234,234,23);
+        print_r(array_filter($arr1, function($val){
+         return $val%2 === 0;
+        }));
+        //function esPar($val){return %val%2 === 0 };
+        //print_r(array_filter($arr1, "esPar"));
+       
+        /**
+         * ? array_map() se usa para aplicarle una funcion a los elementos dentro del array y el resultado es un array nuevo con los resultados.
+         * *  array_map(?callable $callback, array $array, array ...$arrays): array
+         * */
+        function mayor($val){
+         return ($val * $val); 
+        }
+        $arrMap = array_map("mayor", $arr1);
+        print_r($arrMap);
+
+        /**
+         * ? array_reduce() reduce un array a un solo parametro segun la funcion que se le pase
+         * * array_reduce(array $array, callable $callback, mixed $initial = null): mixed
+         * ! no devuelve un array, devuelve un elemento mixto+
+         */
+        function sum($acum,$val){
+         return $acum += $val;
+        }
+      var_dump(array_reduce($arr1, "sum"));
+
+      /**
+       * ? array_key_exist(); comprueba si un valor existe en un array
+       * * array_key_exists(string|int $key, array $array): bool
+       * ! retorna un boolean
+       */
+        print_r(array_key_exists("Pedro", $personas));
+
 ?>
