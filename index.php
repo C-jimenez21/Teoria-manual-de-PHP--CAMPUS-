@@ -11,7 +11,7 @@
 */
 <?php
    header("Content-type: application/json");
-    echo "<br><br>-------PUNTO 6 ------------<br>";
+    echo "<h3>-------PUNTO 6 ------------</h3>";
     /**
      * ? echo(); es la funcion mas comun para imprimir, sirve para imprimir una o más cadenas de texto
      */
@@ -40,7 +40,7 @@
      var_dump($texto);
 
 
-echo "<br>--------PUNTO 7------------";
+echo "<h3>--------PUNTO 7------------</h3>";
 /**
 * ? Variables y constantes 
 * * En este apartado se presentan como declarar una variable en PHP 
@@ -73,7 +73,7 @@ echo "<br>";
 define("ES_VALIDO", true);
 echo ES_VALIDO;
 
-echo "<br>--------PUNTO 8------------<br>";
+echo "<h3>--------PUNTO 8------------</h3>";
 /**
  * ? Tipos de datos
  * * En este apartado se muestran los diferentes tipos de datos con los que se puede trabajar en PHP
@@ -103,7 +103,7 @@ echo "<br>--------PUNTO 8------------<br>";
     $array = [];
     var_dump($array);  // array(0) { } 
 
-    echo "<br>------PUNTO 9 -----<br>";
+    echo "<h3>------PUNTO 9 -----</h3>";
     /**
  * ? Numeros y operadores
  * * En este apartado se estudian los diferentes operadores logicos y su funcionamiento en php
@@ -183,7 +183,7 @@ echo "<br>--------PUNTO 8------------<br>";
     echo "<br> El cliente {$nombreCliente} es {$tipoCliente}";
 
      
-   echo "<br>------PUNTO 10 -----<br>";
+   echo "<h3>------PUNTO 10 -----</h3>";
    /**
     * ? Arreglos, Arreglos asociativos y funciones para arreglos
     * * Hay tres tipos de arrays, arrays indexados, arrays asociativos y arrays multidimensionales.
@@ -193,6 +193,7 @@ echo "<br>--------PUNTO 8------------<br>";
      * ? Arrays indexados
      * todo Son arrays que almacenan elementos y se acceden a ellos medianta un indice númerico.
      */
+    echo "<h5>Arrys Indexados</h5>";
     $nombres = array("Juan", "Pedro", "Santiago");
     print_r($nombres); echo "<br>";
     
@@ -200,6 +201,7 @@ echo "<br>--------PUNTO 8------------<br>";
     * ? Arrays asociativos
     * todo Son arrays cuyos elementos se almacenan y acceden mediante una clave o nombre, estos estan compuestos por elementos "Clave => Valor" 
     */
+    echo "<h5>Arrys Asosiativos</h5>";
     $edades = array(
       "Juan" => 21,
       "Pedro" => 37,
@@ -211,7 +213,7 @@ echo "<br>--------PUNTO 8------------<br>";
      * ? Arrays multidimensionales
      * todo Son arrays que contienen otros arrays como elementos, esto vendria siendo parecido a un matriz de datos, ademas estos elementos pueden ser matricese asosiativas o indexadas
      */
-
+    echo "<h5>Arrys Multidimensionales</h5>";
     $personas = array(
       "Juan" => array(
          "Edad" => 21,
@@ -223,7 +225,8 @@ echo "<br>--------PUNTO 8------------<br>";
          "Santiago" => array("Edad" => 43, "Ciudad" => "Valencia", "Pais" => "España")
       );
       print_r($personas);echo "<br>";
-      
+      echo "<hr>";
+
       /**
        * ? Para acceder a los parametros de un array, primero se accede al valor de la fila y luego por el valor de la columna, usando nomenclatura de corchete.
        */
@@ -242,6 +245,7 @@ echo "<br>--------PUNTO 8------------<br>";
       foreach($edades as $clave => $valor){
          var_dump("Clave: ". $clave. " Valor ". $valor . "<br>");
       }
+      echo "<h3>Metodos mas usados en arrys</h3>";
 
       /**
        * ? En este apartado se implementaran las funciones mas usadas para los arrays en PHP
@@ -252,7 +256,7 @@ echo "<br>--------PUNTO 8------------<br>";
         * ? array_flip() lo que hace es cambiar los valores por claves y viceversa.
         * * array_flip(array $array): array  
         */
-
+        echo "<h5>Array flip()</h5>";
         $arr = array("las", "caleñas", "son");
         print_r ($arr);
         print_r (array_flip($arr)); 
@@ -261,12 +265,14 @@ echo "<br>--------PUNTO 8------------<br>";
          * ? array_fill() lo que hace es rellenar el array con el valor indicado
          * * array_fill(int $start_index, int $count, mixed $value): array
          */
+        echo "<h5>array_fill()</h5>";
         print_r(array_fill(-2, 4, "Hola mundo"));
 
        /**
          * ? array_filter() lo que hace es rellenar el array con el valor indicado
          * * array_filter(array $array, ?callable $callback = null, int $mode = 0): array
          * */
+        echo "<h5>array_filter()</h5>";
         $arr1 = array(1,2,5,2,7,3,12,42,23,42,24,523,23,123,5,32,234,65,346,234,234,23);
         print_r(array_filter($arr1, function($val){
          return $val%2 === 0;
@@ -278,6 +284,7 @@ echo "<br>--------PUNTO 8------------<br>";
          * ? array_map() se usa para aplicarle una funcion a los elementos dentro del array y el resultado es un array nuevo con los resultados.
          * *  array_map(?callable $callback, array $array, array ...$arrays): array
          * */
+        echo "<h5>array_map()</h5>";
         function mayor($val){
          return ($val * $val); 
         }
@@ -289,16 +296,85 @@ echo "<br>--------PUNTO 8------------<br>";
          * * array_reduce(array $array, callable $callback, mixed $initial = null): mixed
          * ! no devuelve un array, devuelve un elemento mixto+
          */
+        echo "<h5>array_reduce()</h5>";
         function sum($acum,$val){
          return $acum += $val;
         }
       var_dump(array_reduce($arr1, "sum"));
 
       /**
-       * ? array_key_exist(); comprueba si un valor existe en un array
+       * ? array_key_exist(); comprueba si una llave existe en un array
        * * array_key_exists(string|int $key, array $array): bool
        * ! retorna un boolean
        */
+      echo "<h5>array_key_exist()</h5>";
         print_r(array_key_exists("Pedro", $personas));
+
+      /**
+       * ? in_array(); compureba si el valor almacenado en un array exite
+       * * in_array(mixed $needle, array $haystack, bool $strict = false): bool
+       * ! retorna un boolean
+       */
+      echo "<h5>in_array()</h5>";
+      echo(in_array("43",$edades));
+      
+      /**
+       * ? array_rand();  Devuelve una o mas claves random de un array(se puede especificar el numero de valores que traiga)
+       * * array_rand(array $array, int $num = 1): int|string|array
+       * !int/sring/array
+       */
+      echo "<h5>array_rand()</h5>";
+      print_r(array_rand($edades, 2));
+      
+      /**
+       * ? array_unique(); remueve los valores duplicados de un array
+       * * array_unique(array $array, int $flags = SORT_STRING): array
+       */
+      echo"<h5>array_unique()</h5>";
+      $arrayRepe  = array("3", "banana", 3 , "banana", 33, "champion");
+      print_r(array_unique($arrayRepe));
+
+      /**
+       * ? array_intersect(); filtra los valores que son iguales en 2 o mas arrays y los agrega en un matriz diferente, el orden de aparicion depende de la matriz que compare primero, en este caso es la array2
+       * * array_intersect(array $array, array ...$arrays): array
+       */
+      echo"<h5>array_intersect()</h5>";
+      $array1 = array(2, 4, 6, 8, 10, 12, "hola", "Mundo", "Perospero");
+      $array2 = array(1,"Mundo", 2, 3, 4, 5, 6, "bigMom", "hola", "hola");
+      print_r(array_intersect($array2, $array1));
+      
+      /**
+       * ? array_diff(); compara los valores de una o mas arrays y devuelve los parametros del primer array que no se encuentran el los demás.
+       * * array_diff(array $array, array ...$arrays): array
+       */
+      echo "<h5>array_diff()</h5>";
+      $array3 = array(12, "Perospero");
+      print_r(array_diff($array1, $array2 ,$array3));
+
+      /**
+       * ? array_push(); ingresa valores al final del array, y retorna la nueva longitud del array.
+       * * array_push(array &$array, mixed ...$values): int
+       * ! retorna enteros
+       */
+      echo "<h5>array_push()</h5>";
+      print_r(array_push($array1,"Shanks", 4, 21, "shirohige"));
+      print_r($array1);
+      
+      /**
+       * ? array_pop(); Extrae, elimina y devuelve el ultimo elemento del array
+       * * array_pop(array &$array): mixed
+       */
+      echo "<h5>array_pop()</h5>";
+      print_r(array_pop($array1));
+      print_r($array1);
+
+      /**
+       * ? array_reverse(); Toma un array existente y voltea los elementos, es decir los primeros de ultimos y vicevcersa.
+       * * array_reverse(array $array, bool $preserve_keys = false): array
+       */
+      echo "<h5>array_reverse()</h5>";
+      print_r(array_reverse($array1));
+      
+
 
 ?>
