@@ -10,7 +10,7 @@
 * todo Estas funciones imprimen directamente en el HTML
 */
 <?php
-   header("Content-type: application/json");
+ //  header("Content-type: application/json");
     echo "<h3>-------PUNTO 6 ------------</h3>";
     /**
      * ? echo(); es la funcion mas comun para imprimir, sirve para imprimir una o más cadenas de texto
@@ -375,6 +375,109 @@ echo "<h3>--------PUNTO 8------------</h3>";
       echo "<h5>array_reverse()</h5>";
       print_r(array_reverse($array1));
       
+        //faltan metodos
+
+
+
+
+
+
+
+
+      echo "<h3>------PUNTO 11 -----</h3>";
+    /**
+     * ? Isset() and Empty -> se usan para identificar si las variables o elementos tienen un valor definido o no.
+     */
+    //Un bucle(condicion)  ciclo(inicio condicion avance)  iteracion(nada {ForEach})
+     /**
+      * ? La funcion isset() -> Sirve para verificar si se la variable existe y tiene un valor definidd, arroja true or false asi no tenga ningun valor
+      */
+
+      $nombre = 2;
+      var_dump(isset($nombre));
+      
+      echo "<br>";
+      $miVariable; //False
+      $miVariable = "hola"; //True
+      if(isset($miVariable)){
+          echo "La variable está definida y tiene un valor";
+      }else{
+          echo "La variable NO esta definida o no tiene valor";
+      }
+  
+      /**
+       * ? La funcion empty() -> Sirve para verificar si la variable esta vacia, de ser asi arroja True, de lo contrario seria false (Tambien valida si la variable existe)
+       */
+      echo "<br>";
+      //$miVariable2;
+      //$miVariable2 ="";
+      $miVariable2 = "2";
+      if(empty($miVariable2)){
+          echo "La variable está vacia o no esta definida";
+      }else{
+          echo "La variable tiene un valor";
+      }
+  
+      /**
+       * *Ejemplos con arrays
+       */
+  
+       $clientes = [];
+       $clientes2 = array();
+       $clientes3 = array("Pedro", "Juan", "Karen");
+       $cliente = [
+          "Nombre" => "Juan",
+          "Saldo" => 200
+       ];
+  
+       /**
+        * todo Usando Empty podemos revisar si un arreglo se encuentra vacio
+        */
+        echo "<br>";
+        var_dump(empty($clientes4));
+        var_dump(empty($clientes));
+        var_dump(empty($clientes2));
+        var_dump(empty($clientes3));
+  
+       /**
+        * todo Usando isset podemos revisar si un arreglo esta creado o una propiedad esta definida
+        */
+        echo "<br>";
+        var_dump(isset($clientes4));
+        var_dump(isset($clientes));
+        var_dump(isset($clientes2));
+        var_dump(isset($clientes3));
+  
+       /**
+        * todo Con isset podemos revisar si una propiedad en un array asociativo existe
+        */
+       echo "<br>";
+       var_dump(isset($cliente["Nombre"]));
+       var_dump(isset($cliente["Edad"]));
+  
+       /**
+        * ? Usando otras funciones que permiten trabajar con arreglos
+        */
+      /**
+       * ? para ordenar tenemos:
+       * * sort -> ordena de menor a mayor
+       * * rsort -> ordena de mayor a menor
+       * * asort -> ordena por valores (orden alfabetico)
+       * * arsort -> ordena por valores (empezando por la z)
+       * * ksort -> ordena por llaves (orden alfabetico)
+       * * krsort -> ordena por llaves (empezando por la z)
+       */
+      //asort($cliente);
+      //arsort($cliente);
+      //ksort($cliente);
+      //krsort($cliente);
+  
+       echo "<pre>";
+       print_r($cliente);
+       echo "</pre>";
+      
+  
+  
 
 
 ?>
