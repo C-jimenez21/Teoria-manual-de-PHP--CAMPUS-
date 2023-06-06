@@ -1,3 +1,5 @@
+<?php
+declare(strict_types=1);
 /**
 * ? Introduccion a php
 * todo Para llevar un orden cuando se trabaja en proyectos creados con php se recomienda las carpetas -css- -img- -js- -scrpits- -uploads- y el archivo principal index.php -> se recomienda esta nomenclatrua en el nombre del archivo php para que lo reconozca el servidor.
@@ -9,7 +11,6 @@
 * * En este apartado se presentan las diferentes variables de salida que tenemos con PHP
 * todo Estas funciones imprimen directamente en el HTML
 */
-<?php
  //  header("Content-type: application/json");
     echo "<h3>-------PUNTO 6 ------------</h3>";
     /**
@@ -251,7 +252,7 @@ echo "<h3>--------PUNTO 8------------</h3>";
        * ? En este apartado se implementaran las funciones mas usadas para los arrays en PHP
        * todo Todas estas funciones reciben un array y retornan un array a excepcion de algunas, las cuales se mencionaran en su respectiva explicacion
        */
-      
+         echo "<pre>";
        /**
         * ? array_flip() lo que hace es cambiar los valores por claves y viceversa.
         * * array_flip(array $array): array  
@@ -308,7 +309,7 @@ echo "<h3>--------PUNTO 8------------</h3>";
        * ! retorna un boolean
        */
       echo "<h5>array_key_exist()</h5>";
-        print_r(array_key_exists("Pedro", $personas));
+        var_dump(array_key_exists("Pedro", $personas));
 
       /**
        * ? in_array(); compureba si el valor almacenado en un array exite
@@ -316,7 +317,7 @@ echo "<h3>--------PUNTO 8------------</h3>";
        * ! retorna un boolean
        */
       echo "<h5>in_array()</h5>";
-      echo(in_array("43",$edades));
+      var_dump(in_array("43",$edades));
       
       /**
        * ? array_rand();  Devuelve una o mas claves random de un array(se puede especificar el numero de valores que traiga)
@@ -375,14 +376,57 @@ echo "<h3>--------PUNTO 8------------</h3>";
       echo "<h5>array_reverse()</h5>";
       print_r(array_reverse($array1));
       
-        //faltan metodos
+      /**
+       * ? array_sum(): Devuelve la suma de todos los valores de un array numérico.
+       * * array_sum(array $array): number
+       */   
+        
+       echo "<h5>array_sum()</h5>";
+       $arrN1 = array(1,2,3,4,5,6,7,8,9);
+       print_r(array_sum($arrN1));
+      
+       /**
+       * ? array_product(): Devuelve el producto de todos los valores de un array numérico.
+       * *  array_product(array $array): number
+       */   
+       echo "<h5>array_product()</h5>";
+       print_r(array_product($arrN1));
 
+      /**
+       * ? array_chunk(): Divide un array en fragmentos más pequeños.
+       * * array_chunk(array $array, int $size, bool $preserve_keys = false): array
+       */   
+      echo "<h5>array_chunk()</h5>";
+      print_r(array_chunk($arrN1, 2, true));
+      
+      /**
+       * ? array_keys(): Devuelve todas las claves de un array.
+       * * array_keys(array $array, mixed $filter_value, bool $strict = false): array
+       */   
+      echo "<h5>array_keys()</h5>";
+      print_r(array_keys($personas));
 
+      /**
+       * ? array_values(): Devuelve todos los valores de un array.
+       * * array_values(array $array): array
+       * *
+       */   
+      echo "<h5>array_values()</h5>";
+      print_r(array_values($personas));
 
-
-
-
-
+      /**
+       * ? array_walk(): Aplica una función de devolución de llamada a cada elemento de un array.
+       * * array_walk(array|object &$array, callable $callback, mixed $arg = null): bool
+       * *
+       */   
+      echo "<h5>array_walk()</h5>";
+      
+      function test_print($item2, $key)
+      {
+         echo("$key = $item2\n");
+      }
+      print_r(array_walk($edades, "test_print"));
+      echo "</pre>";
 
       echo "<h3>------PUNTO 11 -----</h3>";
     /**
@@ -475,9 +519,84 @@ echo "<h3>--------PUNTO 8------------</h3>";
        echo "<pre>";
        print_r($cliente);
        echo "</pre>";
+
+   echo "<h3>------PUNTO 12 -----</h3>";
+   echo "<h3>Estructuras de control</h3>";
+
+   
+
+
+
+
+   
+   echo "<h3>------PUNTO 13 -----</h3>";
+   echo "<h3>Funciones definidas por el usuario</h3>";
+   /**
+    * ? Las funciones en PHP se puede crear siguiendo la siguiente estructura
+    */
+
+    /**
+     * ? Esta es una funcion declarada 
+     * *  create_function(string $args, string $code): string
+     * todo Cuando se maneja el strict_types = 1 se debe definir que clase de parametro ingresa y cual regresa la funcion; se usa los ":" para definir que tipo de parametro retorna la funcion y "?" la que es opcional que aparezca.
+     */ 
+
+   function Saludar(string $name): ? string{
+      if($name =="Julian"){
+         return "Hola {$name} ¿Como estas?";
+      }else{
+         return null;
+      }
+   }
+   echo Saludar("Julian");
+
+   /**
+    * ? Funciones anonimas
+    * 
+    */
+
+    /**
+     * ? Uso del use
+     * * Sirve para aplicar 
+     */
+   $nombre = "Julian";
+   echo "<br>";
+   $fn = function() use(&$nombre):string{
+      return $nombre;
+   };
+   echo $fn();
+
+
+
+
+   /**
+    * ? Usando metodos aplicables a funciones
+    * * function_exist() -> De vuelve un valor boolean dependiendo si la funcion existe 
+    * * func_get_arg() -> Puede obtener los argumentos que se le pasan a las funciones por posicion 
+    * * func_get_args() -> 
+    */
+
+    function datos():void{
+      var_dump(func_get_arg(0));
+      var_dump(func_get_args());
+    };
+
+    echo "<br>";
+    datos("Miguel", 23, true);
+
+    function datos2():void{
+      echo "<pre>";
+      extract(...func_get_args());
+      echo $nombre;
+      echo $edad;
+      echo $casa;
       
-  
-  
-
-
+      var_dump(func_get_args());
+      var_dump(...func_get_args());
+      echo "</pre>";
+   };
+    echo "<br>";
+    datos2(["nombre" => (string) "Miguel",
+      "edad" => (int) 24,
+      "casa" => (bool) true]);
 ?>
