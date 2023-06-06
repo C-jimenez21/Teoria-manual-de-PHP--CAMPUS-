@@ -522,14 +522,124 @@ echo "<h3>--------PUNTO 8------------</h3>";
 
    echo "<h3>------PUNTO 12 -----</h3>";
    echo "<h3>Estructuras de control</h3>";
-
+   /**
+    * ? Las estructuras de control se dividen en 2 grandes ramas
+    * * Las estructuras condicionales [if, switch]
+    * * Las estructuras repetitivas [while, do-while, For, forEach]
+    */
+    
+    /**
+     * ? Hablando de las estructuras condicionales: Son estructuras que permiten el control de flujo dependiendo si se cumple o no una condicion
+    * * Es muy similar a la sintaxis usada en Js 
+    */
+    echo "<h5>Estructuras condicionales</h5>";
+    $aut = true;
+    $admin = false;
+    echo "<h5>if</h5>";
+    if($aut && $admin){
+       echo "Usuario autenticado correctamente";
+      } else {
+         echo "Usuario no autenticado Inicia sesion";
+      };
+   echo "<br>";
    
+   $cliente = [
+      "nombre" => "Juan",
+      "saldo" => 0,
+      "informacion" => [
+            "tipo" => "Regular"
+      ]   
+      ];
 
+   echo "<br>";
+   if(!empty($cliente)){
+      echo "El arreglo de cliente no esta vacio";
+      echo "<br>";
+      if($cliente["saldo"]>0){
+         echo "El cliente tiene saldo disponible";
+      }else if($cliente["informacion"]["tipo"] === "Premium"){
+         echo"El cliente es premium";
+      }else{
+         echo "No hay saldo y no es premium";
+      }
+   }
+   echo "<br>";
+   $tecn = "PHP";
 
-
-
+   echo "<h5>Switch</h5>";
+   switch ($tecn){
+      case "PHP":
+         echo "PHP, es un excelente lenguaje";
+         break;
+      case "Js":
+         echo "Genial, el lenguaje de la web";
+         break;
+      case "HTML":
+         echo "Aja si ";
+         break;
+      default:
+         echo "Algun lenguaje diferente";
+         break;
+   }
+   /**
+   * ? Hablando de las estructuras repetitivas: Son estructuras que permiten repetir la ejecucion de un bloque de codigo varias veces 
+   * * Es muy similar a la sintaxis usada en Js 
+   */
+   echo "<h5>Estructuras repetitivas</h5>";
+   echo "<h5>While</h5>";
    
-   echo "<h3>------PUNTO 13 -----</h3>";
+   /**
+    * ? While -> permite la ejecucicion del codigo hasta que se cumpla una condicion
+    * ? do-while -> Similar al bloque while pero garantiza que el bloque de cofigo se ejecuta almenos una vez
+    * ? for -> permite iterar el bloque de codigo desde un valor hasta otro, variando el paso
+    */
+      $i = 0;
+      while($i<5){
+         echo $i . "<br>";
+         $i++;
+      }
+
+      echo "<br><h5>do-while</h5>";
+      $i = 0;
+      do{
+         echo $i . "<br>";
+         $i++;
+      }while($i<3);
+      
+      echo "<br><h5>for</h5>";
+      for ($i = 1; $i <= 3; $i++) {
+         echo $i . "<br>";
+     }
+     echo "<br><h5>forEach</h5>";
+
+     $productos = [
+      [
+         "Nombre" => "Tablet",
+         "Precio" => 200,
+         "Disponible" => true
+      ],
+      [
+         "Nombre" => "Tv 48in",
+         "Precio" => 500,
+         "Disponible" => true
+      ],
+      [
+         "Nombre" => "Monitor curve 24",
+         "Precio" => 300,
+         "Disponible" => false
+      ],
+   ];
+   foreach($productos as $producto){?>
+      <ul>
+         <li>Producto: <?php echo $producto["Nombre"];?></li>
+         <li>Precio: <?php echo $producto["Precio"];?></li>
+         <li><?php echo $producto["Disponible"] ? "Disponible" : "No Disponible"; ?></li>
+   
+   </ul><?php
+      }
+     
+      echo "<hr>";
+      echo "<h3>------PUNTO 13 -----</h3>";
    echo "<h3>Funciones definidas por el usuario</h3>";
    /**
     * ? Las funciones en PHP se puede crear siguiendo la siguiente estructura
