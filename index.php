@@ -719,4 +719,18 @@ echo "<h3>--------PUNTO 8------------</h3>";
     datos2(["nombre" => (string) "Miguel",
       "edad" => (int) 24,
       "casa" => (bool) true]);
+
+   echo "<hr>";
+   echo "<h3>------PUNTO 14 -----</h3>";
+   echo "<h3>Uso del include, include_once require and require_once </h3>";   
+   echo "Su estructura es de forma 'include('carpet/header.php')' -> este fragmento obtendra el codigo usado en el documento php.";
+
+   /**
+    * ? include, include_once require and require_once son funciones que se utilizan para incluir archivos externos en un programa
+    * * include and include once incluyen un archivo la diferencia es que el Once asegura que el archivo se incluye una sola vez en el programa
+    * * require y require_once es lo mismo sin embargo si el archivo no se encuentra el programa se detiene.
+    * todo Su estructura es de forma "include('carpet/header.php')" -> este fragmento obtendra el codigo usado en el documento php.
+*/
+   
+   
 ?>
