@@ -643,6 +643,7 @@ echo "<h3>--------PUNTO 8------------</h3>";
    echo "<h3>Funciones definidas por el usuario</h3>";
    /**
     * ? Las funciones en PHP se puede crear siguiendo la siguiente estructura
+    * * function name(parameter){ functionality } or function name(type $parameter):type{ functionality }.
     */
 
     /**
@@ -659,31 +660,40 @@ echo "<h3>--------PUNTO 8------------</h3>";
       }
    }
    echo Saludar("Julian");
+   /**
+    * * Ademas el uso de la destructuracion de los arrays es muy util cuando se trabajan con funciones.
+    */
+    function total_intervals($unit, DateInterval ...$intervals) {
+        $time = 0;
+        foreach ($intervals as $interval) {
+            $time += $interval->$unit;
+        }
+        return $time;
+    }
+    
+    $a = new DateInterval('P1D');
+    $b = new DateInterval('P2D');
+    echo total_intervals('d', $a, $b).' days';
 
    /**
     * ? Funciones anonimas
-    * 
+    * * Estas son funciones que no tienen un nombre especificado
+    * ? Uso del use en este ejemplo (Porque tambien se puede usar en la implementacion de otros metodos dentro del mismo archivo)
+    * * Sirve para hacer uso de la variable ya definida con anterioridad
     */
 
-    /**
-     * ? Uso del use
-     * * Sirve para aplicar 
-     */
-   $nombre = "Julian";
-   echo "<br>";
-   $fn = function() use(&$nombre):string{
-      return $nombre;
-   };
-   echo $fn();
-
-
-
+    $nombre = "Julian";
+    echo "<br>";
+    $fn = function() use(&$nombre):string{
+       return $nombre;
+    };
+    echo $fn();
 
    /**
     * ? Usando metodos aplicables a funciones
-    * * function_exist() -> De vuelve un valor boolean dependiendo si la funcion existe 
-    * * func_get_arg() -> Puede obtener los argumentos que se le pasan a las funciones por posicion 
-    * * func_get_args() -> 
+    * * function_exist() -> De vuelve un valor boolean dependiendo si la funcion existe.
+    * * func_get_arg() -> Puede obtener los argumentos que se le pasan a las funciones por posicion.
+    * * func_get_args() -> trae todos los argumentos que se le pasan a la funcion.
     */
 
     function datos():void{
