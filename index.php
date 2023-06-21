@@ -732,5 +732,57 @@ echo "<h3>--------PUNTO 8------------</h3>";
     * todo Su estructura es de forma "include('carpet/header.php')" -> este fragmento obtendra el codigo usado en el documento php.
 */
    
-   
+echo "<hr>";
+echo "<h3>------PUNTO 15 -----</h3>";
+echo "<h3>Json_encode y json_decode</h3>";   
+
+/**
+ * ? Json_encode(): se usa para convertir una cadena de datos PHP en una cadena JSON
+ * * json_encode(mixed $value, int $flags = 0, int $depth = 512): string|false
+ */
+ $productos2 = [
+   [
+      "nombre" => "tablet",
+      "precio" => 200,
+      "disponible" => true
+   ],
+   [
+      "nombre" => "television",
+      "precio" => 300,
+      "disponible" => true
+   ],
+   [
+      "nombre" => "Monitor curvo",
+      "precio" => 400,
+      "disponible" => false
+   ]
+];
+echo "<pre>";
+var_dump($productos2);
+$json = json_encode($productos2);
+var_dump($json);
+
+/**
+ * ? Json_decode(): se transforma un archivo string a Json.
+ * * json_decode( string $json, ?bool $associative = null, int $depth = 512, int $flags = 0): mixed
+ * * el parametro TRUE indica que devolvera un array asosiativo.
+ */
+
+$json = '{"nombre": "Jose Manuel", "edad": 16, "ciudad": "NY"}'; 
+$data = json_decode($json); 
+print_r($data);
+echo "</pre>";
+print($data -> nombre);
+print($data -> edad);
+print($data -> ciudad);
+
+$data = json_decode($json, true); 
+print($data["nombre"]); 
+
+
+
+
+
+
+
 ?>
