@@ -1,37 +1,52 @@
 <?php
      /**
-      * ? PHP AVANZADO 
-      * * BASES DE DATOS RELACIONALES
-      * * son un tipo de sistema de gestión de bases de datos (SGBD) que organiza la información en tablas estructuradas y establece relaciones entre ellas.
+      * ? CONEXION PDO [PHP DATA OBJECTS]
+      * * Es una interfaz de abstracción de bases de datos en PHP. Proporciona un conjunto de clases y métodos para preparar y ejecutar consultas SQL de una manera segura y eficiente. 
       */
 
-      /**
-       * ? De las mas populares esta mysql 
-       * * Tipos de datos: 
-       * * -> INT enteros normalmente usados en id(primary keys and foreign keys) -> INT(11)
-       * * -> Float Son para numeros decimales
-       * * -> VARCHAR Son validos para 0 - 255 caracteres, usado normalmente en nombres
-       * * -> BLOB Son validos objetos como imagenes, texto, audio y video
-       * * ->DATE Valido para fechas con año mes y dia (Tambien existen DATETIME(fecha y hora) - TIME(para horas) - TIMESTAMP(fecha y hora))
-       */
+     try{
+          $dsn = "mysql:host=localhost;dbname=$dbname";
+          $dbh = new PDO($dsn, $user, $pass);           
+     } catch (PDOException $e) {
+          echo $e->getMessage();
+     } 
 
-       /**
-        * ? MODIFICADORES DE ACCESO
-        * * AUTO_INCREMENT -> El valor se incrementa automaticamente -> Usado normalmente para primary keys
-        * * DEFAULT -> Valor predeterminado -> Usado para campos que no tienen valores predeterminados
-        * * NOT NULL -> Campo obligatorio impide que el campo sea nulo -> Usado en primary keys
-        * * UNIQUE -> Campo unico impide que el campo sea duplicado -> Usado en primary keys
-        */
+     /**
+      * ? EXCEPCIONES Y OPCIONES PDO
+      * * maneja los errores en forma de excepciones, por lo que la conexión siempre ha de ir encerrada en un bloque try/catch
+      */
 
-        /**
-         * ? SQL STRUCTURE QUERY LANGUAGE
-         * * DDL (Data Definition Language): Utilizado para definir y modificar la estructura de la base de datos. Incluye comandos como CREATE, ALTER y DROP para crear, modificar y eliminar tablas, índices, vistas, etc.
-         * * DML (Data Manipulation Language): Utilizado para manipular los datos almacenados en la base de datos. Incluye comandos como INSERT, UPDATE y DELETE para agregar, actualizar y eliminar registros.
-         * * DQL (Data Query Language): Utilizado para realizar consultas y recuperar información de la base de datos. El comando más común es SELECT, que permite especificar los criterios de búsqueda y los campos a recuperar.
-         * * DCL (Data Control Language): Utilizado para controlar los privilegios de acceso a la base de datos. Incluye comandos como GRANT y REVOKE para otorgar y revocar permisos.
-         * 
-         */
+     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
-         
+     /**
+      * ? Conexion PDO usando clases y el $_ENV
+      * * DSN="mysql"
+      * * HOST="localhost"
+      * * DBNAME="prueba"
+      * * USER="root"
+      * * PASSWORD=""
+      * * PORT="3306"
+      */
+           
+     // namespace App;
+      class connect {
+          public $con;
+          public function __construct(){
+              try {        
+              //echo "ok";
+              $this->con = new \PDO($_ENV["DSN"].":host=".$_ENV["HOST"].";dbname=".$_ENV["DBNAME"].";user=".$_ENV["USER"]."; password=".$_ENV["PASSWORD"]."; port=".$_ENV["PORT"]);
+              $this->con->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+              $this->con->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_SILENT);
+              $this->con->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);
+              } catch (\PDOException $e) {
+                  echo $e->getMessage();
+              }    
+          }
+      }
+  
+  
+      
 
 ?>
